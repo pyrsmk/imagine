@@ -1,0 +1,22 @@
+{
+	"name": "imagine",
+	"version": "0.1.0",
+	"description": "Execute code when images have been loaded",
+	"main": "src/imagine.js",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/pyrsmk/imagine.git"
+	},
+	"keywords": [
+		"images",
+		"loading",
+		"callback"
+	],
+	"authors": ["Aurélien Delogu"],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/pyrsmk/imagine/issues",
+		"email": "dev@dreamysource.fr"
+	},
+	"homepage": "http://dreamysource.fr/product/imagine"
+}
