@@ -1,6 +1,5 @@
 {
 	"name": "imagine",
-	"version": "0.1.0",
 	"description": "Execute code when images have been loaded",
 	"main": "src/imagine.js",
 	"repository": {
