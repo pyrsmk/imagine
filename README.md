@@ -3,6 +3,16 @@ imagine 0.1.0
 
 Imagine is a tiny library which execute callbacks when the specified images have fully been loaded.
 
+Install
+-------
+
+You can pick the minified library or install it with :
+
+```
+bower install pyrsmk-imagine
+npm install pyrsmk-imagine --save-dev
+```
+
 Use
 ---
 
