@@ -1,4 +1,22 @@
-window.imagine=function(nodes,callback){
+/*
+	Imagine, an image loader with promises
+
+	Author
+		Aurélien Delogu (dev@dreamysource.fr)
+*/
+
+;(function(context,name,definition){
+	if(typeof module!='undefined' && module.exports){
+		module.exports=definition();
+	}
+	else if(typeof define=='function' && define.amd){
+		define(definition);
+	}
+	else{
+		context[name]=definition();
+	}
+}(this,'imagine',function(nodes,callback){
+
 	// Verify
 	if(typeof callback!='function'){
 		throw "A function is expected as callback argument";
@@ -33,4 +51,5 @@ window.imagine=function(nodes,callback){
 			image.onerror=onerror(nodes[i].src);
 		}
 	}
-};				
+
+}));				
