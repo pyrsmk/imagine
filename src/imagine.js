@@ -1,4 +1,4 @@
-/* imagine 0.3.0 (https://github.com/pyrsmk/imagine) */
+/*! imagine 0.3.0 (https://github.com/pyrsmk/imagine) */
 
 ;(function(context,name,definition){
 	if(typeof module!='undefined' && module.exports){
