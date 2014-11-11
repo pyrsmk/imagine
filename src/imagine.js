@@ -72,7 +72,7 @@
 			}
 			return obj;
 		},
-		catch: function(callback){
+		'catch': function(callback){
 			catchs.push(callback);
 			return obj;
 		}
