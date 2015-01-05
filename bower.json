@@ -1,6 +1,6 @@
 {
 	"name": "imagine",
-	"description": "Image loader",
+	"description": "An image (pre)loader with promises",
 	"main": "src/imagine.js",
 	"repository": {
 		"type": "git",
@@ -9,7 +9,8 @@
 	"keywords": [
 		"image",
 		"loader",
-		"callback"
+		"callback",
+		"promises"
 	],
 	"authors": ["Aurélien Delogu"],
 	"license": "MIT",

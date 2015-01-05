@@ -1,6 +1,6 @@
 {
   "name": "pyrsmk-imagine",
-  "description": "Image loader",
+  "description": "An image (pre)loader with promises",
   "version": "0.3.0",
   "author": "Aurélien Delogu <pyrsmk@dreamysource.fr> (http://dreamysource.fr)",
   "repository": {
@@ -11,7 +11,8 @@
   "keywords": [
     "image",
     "loader",
-    "callback"
+    "callback",
+    "promises"
   ],
   "license": "MIT",
   "bugs": {
