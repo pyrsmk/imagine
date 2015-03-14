@@ -1,4 +1,4 @@
-imagine 0.3.0
+imagine 0.3.1
 =============
 
 Imagine is a tiny image (pre)loading library with promises.
