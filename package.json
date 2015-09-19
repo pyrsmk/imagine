@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/pyrsmk/imagine.git"
   },
-  "main": "src/imagine.js",
+  "main": "imagine.min.js",
   "keywords": [
     "image",
     "loader",
