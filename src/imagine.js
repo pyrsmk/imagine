@@ -1,13 +1,12 @@
 /*! imagine 1.0.0 (https://github.com/pyrsmk/imagine) */
 
 module.exports = function(elements) {
-
-	var i, j, url;
 	
 	// Normalize
 	if(typeof elements.length == 'undefined') {
 		elements = [elements];
 	}
+	var i, j, url;
 	for(i=0, j=elements.length; i<j; ++i) {
 		if(typeof elements[i] == 'string') {
 			url = elements[i];
@@ -24,21 +23,41 @@ module.exports = function(elements) {
 			return pinky;
 		}),
 		image,
-		loading = elements.length,
-		successful = [],
-		onload = function(element) {
-			return function() {
-				successful.push(element);
-				if(!--loading) {
-					pinkyswear(true, [successful]);
+		getImages = function(state) {
+			var images = [];
+			for(var i=0, j=elements.length; i<j; ++i) {
+				if(elements[i].imagine == state) {
+					images.push(elements[i]);
 				}
-			};
+			}
+			return images;
 		},
-		onerror = function(element) {
+		isLoading = function() {
+			for(var i=0, j=elements.length; i<j; ++i) {
+				if(!('imagine' in elements[i])) {
+					return true;
+				}
+			}
+			return false;
+		},
+		onLoad = function(element) {
+			if(typeof element.imagine == 'undefined') {
+				element.imagine = 'loaded';
+			}
+			if(!isLoading()) {
+				if(getImages('failed').length) {
+					pinkyswear(false, [getImages('failed')]);
+				}
+				else {
+					pinkyswear(true, [getImages('loaded')]);
+				}
+			}
+		},
+		onError = function(element) {
 			return function(e) {
-				pinkyswear(false, [element, e]);
-				if(!--loading) {
-					pinkyswear(true, [successful]);
+				element.imagine = 'failed'; // overwrite anything set previously to avoid false positives
+				if(!isLoading()) {
+					pinkyswear(false, [getImages('failed')]);
 				}
 			};
 		},
@@ -46,15 +65,15 @@ module.exports = function(elements) {
 			var interval = setInterval(function() {
 				if(image.complete === true) {
 					clearInterval(interval);
-					onload(element)();
+					onLoad(element);
 				}
-			}, 10);
+			}, 100);
 		};
 
 	// Load images
 	for(i=0, j=elements.length; i<j; ++i) {
 		image = new Image();
-		image.onerror = onerror(elements[i]);
+		image.onerror = onError(elements[i]);
 		image.src = elements[i].src;
 		watch(image, elements[i]);
 	}
