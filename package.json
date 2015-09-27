@@ -1,25 +1,27 @@
 {
-  "name": "qwest",
-  "description": "Ajax library with XHR2, promises and request limit",
+  "name": "imagine",
+  "description": "A fast image (pre)loader with promises",
   "version": "1.0.0",
   "author": "Aurélien Delogu <pyrsmk@dreamysource.fr> (http://dreamysource.fr)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pyrsmk/qwest.git"
+    "url": "https://github.com/pyrsmk/imagine.git"
   },
-  "main": "qwest.min.js",
+  "main": "imagine.min.js",
   "keywords": [
-    "ajax",
-    "request",
-    "promises",
-    "xhr"
+    "image",
+    "images",
+    "loader",
+    "preloader",
+    "promise",
+	"promises"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pyrsmk/qwest/issues",
+    "url": "https://github.com/pyrsmk/imagine/issues",
     "email": "dev@dreamysource.fr"
   },
-  "homepage": "http://dreamysource.fr/product/qwest",
+  "homepage": "http://dreamysource.fr/product/imagine",
   "devDependencies": {
     "browserify": "^11.1.0",
     "gulp": "^3.9.0",
@@ -36,7 +38,6 @@
     "through2": "^2.0.0"
   },
   "dependencies": {
-    "jquery-param": "^0.1.2",
     "pinkyswear": "^2.2.2"
   }
 }
