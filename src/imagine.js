@@ -61,7 +61,7 @@ module.exports = function(elements) {
 				}
 			};
 		},
-		watch = function(image, element) {
+		watchComplete = function(image, element) {
 			var interval = setInterval(function() {
 				if(image.complete === true) {
 					clearInterval(interval);
@@ -75,7 +75,7 @@ module.exports = function(elements) {
 		image = new Image();
 		image.onerror = onError(elements[i]);
 		image.src = elements[i].src;
-		watch(image, elements[i]);
+		watchComplete(image, elements[i]); // we need to watch for 'complete' property because onload is not always triggered
 	}
 	
 	return pinkyswear;
