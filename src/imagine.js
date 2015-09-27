@@ -1,4 +1,4 @@
-/*! imagine 0.4.0 (https://github.com/pyrsmk/imagine) */
+/*! imagine 0.5.0 (https://github.com/pyrsmk/imagine) */
 
 ;(function(context, name, definition) {
 	if(typeof module != 'undefined' && module.exports) {
@@ -18,33 +18,23 @@
 	}
 
 	// Prepare
-	var image,
+	var pinkyswear = require('pinkyswear')(),
+		image,
 		loading = elements.length,
-		thens = [],
-		catchs = [],
 		successful = [],
 		onload = function(element) {
 			return function() {
 				successful.push(element);
 				if(!--loading) {
-					for(var i=0, j=thens.length; i<j; ++i) {
-						thens[i].call(successful);
-					}
+					pinkyswear(true, [successful]);
 				}
 			};
 		},
 		onerror = function(element) {
 			return function(e) {
-				var i, j;
-				if(catchs.length) {
-					for(i=0, j=catchs.length; i<j; ++i) {
-						catchs[i].call(element);
-					}
-				}
+				pinkyswear(false, [element]);
 				if(!--loading) {
-					for(i=0, j=thens.length; i<j; ++i) {
-						thens[i].call(successful);
-					}
+					pinkyswear(true, [successful]);
 				}
 			};
 		},
@@ -69,23 +59,7 @@
 		}
 		watch(image, elements[i]);
 	}
-
-	// Return promises
-	var obj={
-		then: function(callback){
-			if(loading){
-				thens.push(callback);
-			}
-			else{
-				callback.call(elements);
-			}
-			return obj;
-		},
-		'catch': function(callback){
-			catchs.push(callback);
-			return obj;
-		}
-	};
-	return obj;
+	
+	return pinkyswear;
 
 }));
