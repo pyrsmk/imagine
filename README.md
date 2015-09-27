@@ -1,4 +1,4 @@
-imagine 0.5.0
+imagine 1.0.0
 =============
 
 Imagine is a tiny image (pre)loading library with promises.
@@ -20,28 +20,41 @@ Use
 Imagine lets you load one or several images and executes some tasks when they had fully loaded, or catch errors when something went wrong. Here's an example with already existing images :
 
 ```js
-imagine($('img')).then(function(){
-    // 'this' refers to the successfully loaded images (images that have encounter an error are not listed)
-    $(this).animate({
-        opacity: 1,
-        duration: 250
-    });
-}).catch(function(){
-    // 'this' refers to the image that has encounter the error
-    $(this).css('background','red');
-});
+imagine($('img')).then(function(images) {
+					// 'this' refers to the successfully loaded images (images that have encounter an error are not listed)
+					$(this).animate({
+						opacity: 1,
+						duration: 250
+					});
+				})
+				.catch(function(image, e) {
+					// 'this' refers to the image that has encounter the error
+					$(this).css('background','red');
+				});
 ```
 
-But, with imagine you can also preload some images for future use. Note that there the `this` keyword does not return a DOM element but the URL itself.
+You can also preload some images for future use by specifying their URLs.
 
 ```js
-var images=[
-    'images/example.jpg',
-    'http://example.com/images/cat.png'
-];
-imagine(images).then(function(){
-    var img=$('<img src="'+this+'">');
-    $('body').append(img);
+var images = [
+		'images/example.jpg',
+		'http://example.com/images/cat.png'
+	],
+	preloaded;
+
+// Preload images
+imagine(images).then(function(images) {
+    preloaded = images;
+});
+
+
+/*
+	...
+*/
+
+// Finally at them to the body
+$(preloaded).forEach(function() {
+	$('body').append(this);
 });
 ```
 

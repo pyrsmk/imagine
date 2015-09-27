@@ -1,24 +1,28 @@
-/*! imagine 0.5.0 (https://github.com/pyrsmk/imagine) */
+/*! imagine 1.0.0 (https://github.com/pyrsmk/imagine) */
 
-;(function(context, name, definition) {
-	if(typeof module != 'undefined' && module.exports) {
-		module.exports = definition;
-	}
-	else if(typeof define == 'function' && define.amd) {
-		define(definition);
-	}
-	else{
-		context[name] = definition;
-	}
-}(this, 'imagine', function(elements) {
+module.exports = function(elements) {
 
+	var i, j, url;
+	
 	// Normalize
-	if(typeof elements == 'string' || typeof elements.length == 'undefined') {
+	if(typeof elements.length == 'undefined') {
 		elements = [elements];
+	}
+	for(i=0, j=elements.length; i<j; ++i) {
+		if(typeof elements[i] == 'string') {
+			url = elements[i];
+			elements[i] = document.createElement('img');
+			elements[i].src = url;
+		}
 	}
 
 	// Prepare
-	var pinkyswear = require('pinkyswear')(),
+	var pinkyswear = require('pinkyswear')(function(pinky) {
+			pinky['catch'] = function(f) {
+				return pinky.then(null, f);
+			};
+			return pinky;
+		}),
 		image,
 		loading = elements.length,
 		successful = [],
@@ -32,7 +36,7 @@
 		},
 		onerror = function(element) {
 			return function(e) {
-				pinkyswear(false, [element]);
+				pinkyswear(false, [element, e]);
 				if(!--loading) {
 					pinkyswear(true, [successful]);
 				}
@@ -44,22 +48,17 @@
 					clearInterval(interval);
 					onload(element)();
 				}
-			}, 100);
+			}, 10);
 		};
 
 	// Load images
-	for(var i=0, j=elements.length; i<j; ++i){
+	for(i=0, j=elements.length; i<j; ++i) {
 		image = new Image();
 		image.onerror = onerror(elements[i]);
-		if(typeof elements[i] == 'string') {
-			image.src = elements[i];
-		}
-		else {
-			image.src = elements[i].src;
-		}
+		image.src = elements[i].src;
 		watch(image, elements[i]);
 	}
 	
 	return pinkyswear;
 
-}));
+};
