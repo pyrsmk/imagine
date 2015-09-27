@@ -9,9 +9,9 @@ Install
 You can pick the minified library or install it with :
 
 ```
-jam install pyrsmk-imagine
+npm install pyrsmk-imagine
 bower install pyrsmk-imagine
-npm install pyrsmk-imagine --save-dev
+jam install pyrsmk-imagine
 ```
 
 Use
