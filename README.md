@@ -14,6 +14,13 @@ bower install pyrsmk-imagine
 jam install pyrsmk-imagine
 ```
 
+About the new `1.0` major release
+---------------------------------
+
+- [Pinkyswear](https://github.com/timjansen/pinkyswear.js) is now a dependency of imagine
+- the API has been rewritten, so please migrate your code before deploying it
+- previous version had false positives, I encourage you to migrate now
+
 Use
 ---
 
