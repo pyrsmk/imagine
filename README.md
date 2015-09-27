@@ -1,7 +1,7 @@
 imagine 1.0.0
 =============
 
-Imagine is a tiny image (pre)loading library with promises.
+Imagine is a tiny image (pre)loading library with promises. It fixes weird behaviors on some browsers and add a simple/stable way to know if one or several images are loaded or not.
 
 Install
 -------
@@ -21,15 +21,15 @@ Imagine lets you load one or several images and executes some tasks when they ha
 
 ```js
 imagine($('img')).then(function(images) {
-					// 'this' refers to the successfully loaded images (images that have encounter an error are not listed)
-					$(this).animate({
+					// the 'images' variable refers to loaded images (all of them in fact, since no error has been caught)
+					$(images).animate({
 						opacity: 1,
 						duration: 250
 					});
 				})
-				.catch(function(image, e) {
-					// 'this' refers to the image that has encounter the error
-					$(this).css('background','red');
+				.catch(function(images) {
+					// 'images' refers to the failed images
+					$(images).css('background','red');
 				});
 ```
 
