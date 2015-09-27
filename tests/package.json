@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "domready": "^1.0.8",
+    "jquery": "^2.1.4",
+    "pyrsmk-toast": "^1.2.4",
+    "qunitjs": "^1.19.0"
+  }
+}
