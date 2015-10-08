@@ -1,19 +1,6 @@
-/*! imagine 1.0.0 (https://github.com/pyrsmk/imagine) */
+/*! imagine 1.0.1 (https://github.com/pyrsmk/imagine) */
 
 module.exports = function(elements) {
-	
-	// Normalize
-	if(typeof elements.length == 'undefined') {
-		elements = [elements];
-	}
-	var i, j, url;
-	for(i=0, j=elements.length; i<j; ++i) {
-		if(typeof elements[i] == 'string') {
-			url = elements[i];
-			elements[i] = document.createElement('img');
-			elements[i].src = url;
-		}
-	}
 
 	// Prepare
 	var pinkyswear = require('pinkyswear')(function(pinky) {
@@ -63,13 +50,26 @@ module.exports = function(elements) {
 		},
 		watchComplete = function(image, element) {
 			var interval = setInterval(function() {
-				if(image.complete === true) {
+				if(image.complete && image.width) {
 					clearInterval(interval);
 					onLoad(element);
 				}
 			}, 100);
 		};
-
+	
+	// Normalize
+	if(typeof elements != 'object' || !('length' in elements)) {
+		elements = [elements];
+	}
+	var i, j, url;
+	for(i=0, j=elements.length; i<j; ++i) {
+		if(typeof elements[i] == 'string') {
+			url = elements[i];
+			elements[i] = document.createElement('img');
+			elements[i].src = url;
+		}
+	}
+	
 	// Load images
 	for(i=0, j=elements.length; i<j; ++i) {
 		image = new Image();
