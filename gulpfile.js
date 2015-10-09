@@ -11,6 +11,7 @@ var fs = require('fs'),
 	browserify = require('browserify'),
 	resolve = require('resolve'),
 	through2 = require('through2'),
+	derequire = require('gulp-derequire'),
 	_ = require('lodash');
 
 var name = 'imagine';
@@ -70,7 +71,8 @@ gulp.task('build', ['version', 'lint'], function() {
 					});
 		
 				}) )
-				//.pipe( uglify() )
+				.pipe( derequire() )
+				.pipe( uglify() )
 				.pipe( rename(name+'.min.js') )
 				.pipe( gulp.dest('.') )
 				.pipe( size({gzip:true}) );
