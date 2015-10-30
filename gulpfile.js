@@ -14,14 +14,14 @@ var fs = require('fs'),
 	derequire = require('gulp-derequire'),
 	_ = require('lodash');
 
-var name = 'imagine';
+var name = 'imagine',
+	version = fs.readFileSync('./src/'+name+'.js', {encoding: 'utf8'}).match(/^\/\*\! [\w-]+ ([0-9.]+)/)[1];
 
 // ======================================== gulp version
 
 gulp.task('version', function() {
 
-	var streams = merge(),
-		version = fs.readFileSync('./src/'+name+'.js', {encoding: 'utf8'}).match(/^\/\*\! \w+ ([0-9.]+)/)[1];
+	var streams = merge();
 
 	streams.add(
 		gulp.src( './package.json' )
@@ -81,16 +81,13 @@ gulp.task('build', ['version', 'lint'], function() {
 
 // ======================================== gulp publish
 
-gulp.task('publish', function() {
-
-	return gulp.src('.', {read: false})
-				.pipe(shell([
-					'npm publish',
-					'jam publish'
-				]));
-
-});
+gulp.task('publish', shell.task([
+	"git tag -a "+version+" -m '"+version+"'",
+	'git push --tags',
+	'npm publish',
+	'jam publish'
+]));
 
 // ======================================== gulp
 
-gulp.task('default', ['build']);
+gulp.task('default', ['build', 'publish']);
