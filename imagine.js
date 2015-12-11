@@ -213,7 +213,7 @@ process.umask = function() { return 0; };
 
 }).call(this,_dereq_('_process'))
 },{"_process":1}],"imagine":[function(_dereq_,module,exports){
-/*! imagine 1.0.3 (https://github.com/pyrsmk/imagine) */
+/*! imagine 1.0.4 (https://github.com/pyrsmk/imagine) */
 
 module.exports = function(elements) {
 
