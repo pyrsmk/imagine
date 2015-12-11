@@ -52,26 +52,27 @@ gulp.task('lint', function() {
 // ======================================== gulp build
 
 gulp.task('build', ['version', 'lint'], function() {
-	
+
 	return gulp.src( './src/'+name+'.js' )
 				.pipe( size() )
 				.pipe( through2.obj(function(file, enc, next) {
-		
+
 					var b = browserify(null, {standalone: name});
-		
+
 					(_.keys(require('./package.json').dependencies) || []).forEach(function(name) {
 						b.add(resolve.sync(name, {moduleDirectory: './node_modules/'}));
 					});
-		
+
 					b.require('./src/'+name+'.js', {expose: name});
-		
+
 					b.bundle(function(err, res) {
 						file.contents = res;
 						next(null, file);
 					});
-		
+
 				}) )
 				.pipe( derequire() )
+				.pipe( gulp.dest('.') )
 				.pipe( uglify() )
 				.pipe( rename(name+'.min.js') )
 				.pipe( gulp.dest('.') )
