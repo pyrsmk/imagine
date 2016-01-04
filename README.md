@@ -1,4 +1,4 @@
-imagine 1.0.4
+imagine 1.0.5
 =============
 
 Imagine is a tiny image (pre)loading library with promises. It fixes weird behaviors on some browsers and add a simple/stable way to know if one or several images are loaded or not.

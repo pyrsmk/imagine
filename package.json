@@ -1,13 +1,13 @@
 {
   "name": "pyrsmk-imagine",
   "description": "A fast image (pre)loader with promises",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Aurélien Delogu <pyrsmk@dreamysource.fr> (http://dreamysource.fr)",
   "repository": {
     "type": "git",
     "url": "https://github.com/pyrsmk/imagine.git"
   },
-  "main": "imagine.js",
+  "main": "src/imagine.js",
   "keywords": [
     "image",
     "images",
