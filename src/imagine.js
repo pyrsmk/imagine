@@ -1,4 +1,4 @@
-/*! imagine 1.0.5 (https://github.com/pyrsmk/imagine) */
+/*! imagine 1.0.6 (https://github.com/pyrsmk/imagine) */
 
 module.exports = function(elements) {
 
@@ -9,7 +9,7 @@ module.exports = function(elements) {
 			};
 			return pinky;
 		}),
-		image,
+		
 		getImages = function(state) {
 			var images = [];
 			for(var i=0, j=elements.length; i<j; ++i) {
@@ -19,6 +19,7 @@ module.exports = function(elements) {
 			}
 			return images;
 		},
+		
 		isLoading = function() {
 			for(var i=0, j=elements.length; i<j; ++i) {
 				if(!('imagine' in elements[i])) {
@@ -27,9 +28,10 @@ module.exports = function(elements) {
 			}
 			return false;
 		},
-		onLoad = function(element) {
-			if(typeof element.imagine == 'undefined') {
-				element.imagine = 'loaded';
+		
+		onLoad = function(image) {
+			if(typeof image.imagine == 'undefined') {
+				image.imagine = 'loaded';
 			}
 			if(!isLoading()) {
 				if(getImages('failed').length) {
@@ -40,19 +42,21 @@ module.exports = function(elements) {
 				}
 			}
 		},
-		onError = function(element) {
+		
+		onError = function(image) {
 			return function(e) {
-				element.imagine = 'failed'; // overwrite anything set previously to avoid false positives
+				image.imagine = 'failed'; // overwrite anything set previously to avoid false positives
 				if(!isLoading()) {
 					pinkyswear(false, [getImages('failed')]);
 				}
 			};
 		},
-		watchComplete = function(image, element) {
+		
+		watchComplete = function(image) {
 			var interval = setInterval(function() {
 				if(image.complete && image.width) {
 					clearInterval(interval);
-					onLoad(element);
+					onLoad(image);
 				}
 			}, 100);
 		};
@@ -61,21 +65,22 @@ module.exports = function(elements) {
 	if(typeof elements != 'object' || !('length' in elements)) {
 		elements = [elements];
 	}
-	var i, j, url;
-	for(i=0, j=elements.length; i<j; ++i) {
-		if(typeof elements[i] == 'string') {
-			url = elements[i];
-			elements[i] = document.createElement('img');
-			elements[i].src = url;
-		}
-	}
+	var image,
+		i,
+		j;
 	
 	// Load images
 	for(i=0, j=elements.length; i<j; ++i) {
-		image = new Image();
-		image.onerror = onError(elements[i]);
-		image.src = elements[i].src;
-		watchComplete(image, elements[i]); // we need to watch for 'complete' property because onload is not always triggered
+		if(typeof elements[i] == 'string') {
+			image = new Image();
+			image.src = elements[i];
+			elements[i] = image;
+		}
+		else {
+			image = elements[i];
+		}
+		image.onerror = onError(image);
+		watchComplete(image); // we need to watch for the 'complete' property because onload() is not always triggered
 	}
 	
 	return pinkyswear;
