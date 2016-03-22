@@ -1,4 +1,4 @@
-/*! imagine 1.0.7 (https://github.com/pyrsmk/imagine) */
+/*! imagine 1.0.8 (https://github.com/pyrsmk/imagine) */
 
 module.exports = function(elements) {
 
@@ -73,11 +73,6 @@ module.exports = function(elements) {
 	for(i=0, j=elements.length; i<j; ++i) {
 		if(typeof elements[i] == 'string') {
 			image = new Image();
-			image.onload = function(image) {
-				return function() {
-					onLoad(image);
-				};
-			}(image);
 			image.src = elements[i];
 			elements[i] = image;
 		}
