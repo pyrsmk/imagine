@@ -1,4 +1,4 @@
-/*! imagine 1.0.8 (https://github.com/pyrsmk/imagine) */
+/*! imagine 1.0.9 (https://github.com/pyrsmk/imagine) */
 
 module.exports = function(elements) {
 
