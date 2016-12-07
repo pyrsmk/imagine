@@ -58,7 +58,7 @@ imagine(images).then(function(images) {
 	...
 */
 
-// Finally at them to the body
+// Finally add them to the body
 $(preloaded).forEach(function() {
 	$('body').append(this);
 });
