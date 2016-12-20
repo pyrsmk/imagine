@@ -1,6 +1,8 @@
 imagine 1.0.10
 =============
 
+__This library is now obsolete and I encourage you to choose another solution like [imagesLoaded](https://github.com/desandro/imagesloaded)__
+
 Imagine is a tiny image (pre)loading library with promises. It fixes weird behaviors on some browsers and add a simple/stable way to know if one or several images are loaded or not.
 
 Install
