@@ -1,16 +1,18 @@
 {
 	"name": "imagine",
-	"description": "An image (pre)loader with promises",
-	"main": "src/imagine.js",
+	"description": "An image loader with promises",
+	"main": "lib/imagine.js",
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/pyrsmk/imagine.git"
 	},
 	"keywords": [
-		"image",
-		"loader",
-		"callback",
-		"promises"
+        "image",
+        "images",
+        "loader",
+        "preloader",
+        "promise",
+        "promises"
 	],
 	"authors": ["Aurélien Delogu"],
 	"license": "MIT",
@@ -19,12 +21,12 @@
 		"email": "dev@dreamysource.fr"
 	},
 	"homepage": "http://dreamysource.io/project/imagine",
-  "ignore": [
-    ".git/",
-    ".gitignore",
-    "nodes_modules/",
-    "tests/",
-    "Gruntfile.js",
-    "package.json"
-  ]
+    "ignore": [
+        ".git/",
+        ".gitignore",
+        "nodes_modules/",
+        "tests/",
+        "gulpfile.js",
+        "package.json"
+    ]
 }

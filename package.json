@@ -1,13 +1,13 @@
 {
   "name": "pyrsmk-imagine",
-  "description": "A fast image (pre)loader with promises",
-  "version": "1.0.10",
+  "description": "A fast image loader with promises",
+  "version": "1.1.0",
   "author": "Aurélien Delogu <pyrsmk@dreamysource.fr> (http://dreamysource.fr)",
   "repository": {
     "type": "git",
     "url": "https://github.com/pyrsmk/imagine.git"
   },
-  "main": "src/imagine.js",
+  "main": "lib/imagine.js",
   "keywords": [
     "image",
     "images",
@@ -23,22 +23,21 @@
   },
   "homepage": "http://dreamysource.io/project/imagine",
   "devDependencies": {
-    "browserify": "^11.1.0",
     "gulp": "^3.9.0",
-    "gulp-derequire": "^2.1.0",
-    "gulp-jshint": "^1.11.2",
+    "gulp-add-src": "^0.2.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-flowtype": "^1.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.3",
     "gulp-shell": "^0.4.2",
-    "gulp-sizereport": "^1.1.2",
-    "gulp-uglify": "^1.2.0",
-    "jshint-stylish": "^2.0.1",
-    "lodash": "^3.10.1",
-    "merge2": "^0.3.6",
-    "resolve": "^1.1.6",
-    "through2": "^2.0.0"
+    "gulp-uglify": "^2.0.0",
+    "gulp-umd": "^0.2.0",
+    "lodash": "^4.16.4",
+    "resolve": "^1.1.7",
+    "umd-templates": "0.0.3"
   },
   "dependencies": {
-    "pinkyswear": "^2.2.2"
+    "zousan": "^2.3.3"
   }
 }

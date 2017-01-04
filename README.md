@@ -1,4 +1,4 @@
-imagine 1.0.10
+imagine 1.1.0
 =============
 
 __This library is now obsolete and I encourage you to choose another solution like [imagesLoaded](https://github.com/desandro/imagesloaded)__
@@ -13,15 +13,7 @@ You can pick the minified library or install it with :
 ```
 npm install pyrsmk-imagine
 bower install pyrsmk-imagine
-jam install pyrsmk-imagine
 ```
-
-About the new `1.0` major release
----------------------------------
-
-- [Pinkyswear](https://github.com/timjansen/pinkyswear.js) is now a dependency of imagine
-- the API has been rewritten, so please migrate your code before deploying it
-- previous version had false positives, I encourage you to migrate now
 
 Use
 ---
@@ -30,7 +22,7 @@ Imagine lets you load one or several images and executes some tasks when they ha
 
 ```js
 imagine($('img')).then(function(images) {
-					// the 'images' variable refers to loaded images (all of them in fact, since no error has been caught)
+					// the 'images' variable refers to the loaded images
 					$(images).animate({
 						opacity: 1,
 						duration: 250
